@@ -13,7 +13,7 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                sh 'sudo docker build -t node-app-448 .'
+                sh 'docker build -t node-app-448 .'
             }
         }
     }
