@@ -40,13 +40,13 @@ pipeline {
             }
         }
 
-        stage('Deploy to App Server') {
+                stage('Deploy to App Server') {
             steps {
                 script {
                     def ACCOUNT_ID = sh(script: "aws sts get-caller-identity --query Account --output text", returnStdout: true).trim()
 
                     sh """
-                    ssh -i /var/lib/jenkins/.ssh/jenkins-app-key -o StrictHostKeyChecking=no ec2-user@10.0.3.14
+                    ssh -i /var/lib/jenkins/.ssh/jenkins-app-key -o StrictHostKeyChecking=no ec2-user@10.0.3.14 '
                     docker stop node-app || true
                     docker rm node-app || true
 
@@ -57,10 +57,8 @@ pipeline {
 
                     docker run -d -p 8081:8081 --name node-app \
                     ${ACCOUNT_ID}.dkr.ecr.us-east-1.amazonaws.com/app-448-repo:latest
-                    EOF
+                    '
                     """
                 }
             }
         }
-    }
-}
