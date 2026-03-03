@@ -46,7 +46,7 @@ pipeline {
                     def ACCOUNT_ID = sh(script: "aws sts get-caller-identity --query Account --output text", returnStdout: true).trim()
 
                     sh """
-                    ssh -o StrictHostKeyChecking=no ec2-user@10.0.3.14 << 'EOF'
+                    ssh -i /var/lib/jenkins/.ssh/jenkins-app-key -o StrictHostKeyChecking=no ec2-user@10.0.3.14
                     docker stop node-app || true
                     docker rm node-app || true
 
