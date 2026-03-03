@@ -12,8 +12,8 @@ pipeline {
         stage('Checkout') {
             steps {
                 git branch: 'main',
-                credentialsId: 'github-448',
-                url: 'https://github.com/vishnujithprofessional-svg/node-app-448.git'
+                    credentialsId: 'github-448',
+                    url: 'https://github.com/vishnujithprofessional-svg/node-app-448.git'
             }
         }
 
@@ -40,7 +40,7 @@ pipeline {
             }
         }
 
-                stage('Deploy to App Server') {
+        stage('Deploy to App Server') {
             steps {
                 script {
                     def ACCOUNT_ID = sh(script: "aws sts get-caller-identity --query Account --output text", returnStdout: true).trim()
@@ -62,3 +62,5 @@ pipeline {
                 }
             }
         }
+    }
+}
