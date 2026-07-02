@@ -1,61 +1,173 @@
-DevOps AWS Infrastructure Project
+# AWS DevOps Infrastructure
 
-Overview  
-This project demonstrates an end-to-end DevOps workflow using AWS, Terraform, Ansible, Docker, and Jenkins. It includes infrastructure provisioning, configuration management, CI/CD automation, and containerized application deployment.
+## Project Overview
 
----
+This project demonstrates a complete end-to-end DevOps workflow on Amazon Web Services (AWS). It showcases Infrastructure as Code (IaC), configuration management, containerization, and Continuous Integration/Continuous Deployment (CI/CD) by automating the provisioning and deployment of a web application.
 
-Architecture  
-- AWS VPC with public and private subnets  
-- Bastion host for secure SSH access  
-- Jenkins server in private subnet  
-- Application server in private subnet  
-- Application Load Balancer (ALB) for external traffic routing  
+The infrastructure is provisioned using Terraform, configured using Ansible, containerized with Docker, and automated through Jenkins. The application is deployed inside private subnets behind an Application Load Balancer (ALB), following secure AWS architecture best practices.
 
 ---
 
-Load Balancer (ALB)  
-An Application Load Balancer (ALB) is used to expose services to users while keeping backend servers secure.
+## Architecture Diagram
 
-- Deployed in public subnets  
-- Routes incoming HTTP requests to private servers  
-- Performs health checks to ensure availability  
-- Path-based routing used for accessing Jenkins (/jenkins)  
+The following diagram illustrates the AWS infrastructure and deployment workflow used in this project.
 
-This ensures that private instances are never directly exposed to the internet.
+![AWS Architecture](screenshots/architecture-diagram.png)
 
 ---
 
-Tools Used  
-- AWS (EC2, VPC, ALB, IAM)  
-- Terraform (Infrastructure as Code)  
-- Ansible (Configuration Management)  
-- Docker (Containerization)  
-- Jenkins (CI/CD)  
+## Project Features
+
+- Provisioned complete AWS infrastructure using Terraform
+- Created a custom VPC with public and private subnets
+- Configured Internet Gateway and NAT Gateway
+- Implemented secure network segmentation using Security Groups
+- Deployed Bastion Host for secure SSH access
+- Provisioned Jenkins and Application servers inside private subnets
+- Configured Application Load Balancer (ALB) for external access
+- Automated Docker installation using Ansible playbooks
+- Built and deployed a containerized Node.js application using Docker
+- Automated application deployment through Jenkins CI/CD pipeline
+- Stored Terraform state remotely using an Amazon S3 backend
+- Followed Infrastructure as Code (IaC) and DevOps best practices
 
 ---
 
-Workflow  
-1. Infrastructure is provisioned using Terraform (VPC, subnets, EC2)  
-2. Ansible installs Docker on Jenkins and application servers  
-3. Jenkins automates build and deployment process  
-4. Application is containerized using Docker  
-5. ALB routes user traffic to application server  
+## Architecture Components
+
+### Networking
+
+- Custom AWS VPC
+- Public and Private Subnets
+- Internet Gateway
+- NAT Gateway
+- Route Tables
+- Security Groups
+
+### Compute
+
+- Bastion Host
+- Jenkins Server
+- Application Server
+
+### Load Balancing
+
+- Application Load Balancer (ALB)
+- Target Groups
+- Health Checks
+- Path-based Routing
+
+### DevOps Tools
+
+- Terraform
+- Ansible
+- Docker
+- Jenkins
 
 ---
 
-Ansible Setup  
-- Inventory configured for Jenkins and App servers  
-- Playbook used to install and start Docker service  
+## Technology Stack
+
+| Category | Technologies |
+|----------|--------------|
+| Cloud Platform | AWS |
+| Infrastructure as Code | Terraform |
+| Configuration Management | Ansible |
+| Containerization | Docker |
+| CI/CD | Jenkins |
+| Compute | EC2 |
+| Networking | VPC, Subnets, Route Tables, Internet Gateway, NAT Gateway |
+| Load Balancing | Application Load Balancer (ALB) |
+| Security | IAM, Security Groups |
+| Remote State | Amazon S3 |
+| Operating System | Linux |
+| Version Control | Git & GitHub |
 
 ---
 
-Result  
-- Application successfully deployed and accessible through ALB  
-- Jenkins automation configured and operational  
-- Secure architecture with private subnets and bastion access  
+## Project Workflow
+
+1. Terraform provisions the complete AWS infrastructure.
+2. A custom VPC with public and private subnets is created.
+3. Bastion Host, Jenkins Server, and Application Server are deployed.
+4. Ansible installs and configures Docker on the target servers.
+5. Jenkins automates the application build and deployment process.
+6. Docker containerizes the Node.js application.
+7. The Application Load Balancer routes incoming traffic to the application server.
+8. Users access the application securely through the ALB while backend servers remain private.
 
 ---
 
-Note  
-AWS resources were terminated after project completion to avoid cost. The setup can be recreated using the provided configuration.
+## Repository Structure
+
+```
+.
+├── ansible/
+├── terraform/
+├── screenshots/
+├── Dockerfile
+├── Jenkinsfile
+├── package.json
+├── server.js
+└── README.md
+```
+
+---
+
+## Infrastructure Highlights
+
+- Infrastructure fully provisioned using Terraform
+- Remote Terraform state stored in Amazon S3
+- Secure multi-tier AWS architecture
+- Private EC2 instances protected from direct internet access
+- Bastion Host used for secure administration
+- Jenkins configured for CI/CD automation
+- Docker-based application deployment
+- Application exposed securely through an Application Load Balancer
+
+---
+
+## Screenshots
+
+Project screenshots are available inside the **screenshots/** directory, including:
+
+- AWS Architecture Diagram
+- Jenkins Dashboard
+- Terraform Deployment
+- Application Load Balancer
+- Docker Deployment
+- Infrastructure Provisioning
+
+---
+
+## Skills Demonstrated
+
+- Amazon Web Services (AWS)
+- Terraform
+- Infrastructure as Code (IaC)
+- Ansible
+- Docker
+- Jenkins
+- CI/CD
+- Linux Administration
+- Bash Scripting
+- Git & GitHub
+- VPC Networking
+- EC2
+- Security Groups
+- NAT Gateway
+- Internet Gateway
+- Application Load Balancer
+- Infrastructure Automation
+
+---
+
+## Project Outcome
+
+Successfully designed and deployed a secure, production-style AWS infrastructure using Infrastructure as Code and DevOps automation tools. The project demonstrates provisioning, configuration management, containerization, and CI/CD implementation while following AWS networking and security best practices.
+
+---
+
+## Note
+
+AWS resources were terminated after project completion to avoid unnecessary cloud costs. The complete infrastructure can be recreated using the Terraform and Ansible configurations available in this repository.
