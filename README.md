@@ -8,15 +8,15 @@ The infrastructure is provisioned using Terraform, configured using Ansible, con
 
 ---
 
-## Architecture Diagram
+# Architecture Diagram
 
 The following diagram illustrates the AWS infrastructure and deployment workflow used in this project.
 
-![AWS Architecture](screenshots/architecture-diagram.png)
+![AWS Architecture](screenshots/architecture-diagram.jpg)
 
 ---
 
-## Project Features
+# Project Features
 
 - Provisioned complete AWS infrastructure using Terraform
 - Created a custom VPC with public and private subnets
@@ -28,17 +28,37 @@ The following diagram illustrates the AWS infrastructure and deployment workflow
 - Automated Docker installation using Ansible playbooks
 - Built and deployed a containerized Node.js application using Docker
 - Automated application deployment through Jenkins CI/CD pipeline
-- Stored Terraform state remotely using an Amazon S3 backend
+- Stored Terraform state remotely using Amazon S3
 - Followed Infrastructure as Code (IaC) and DevOps best practices
 
 ---
 
-## Architecture Components
+# Technology Stack
+
+| Category | Technology |
+|-----------|------------|
+| Cloud Platform | AWS |
+| Infrastructure as Code | Terraform |
+| Configuration Management | Ansible |
+| Containerization | Docker |
+| CI/CD | Jenkins |
+| Compute | Amazon EC2 |
+| Networking | VPC, Subnets, Route Tables, Internet Gateway, NAT Gateway |
+| Load Balancer | Application Load Balancer (ALB) |
+| Security | IAM, Security Groups |
+| Remote State | Amazon S3 Backend |
+| Operating System | Linux |
+| Version Control | Git & GitHub |
+
+---
+
+# Architecture Components
 
 ### Networking
 
-- Custom AWS VPC
-- Public and Private Subnets
+- Custom VPC
+- Public Subnets
+- Private Subnets
 - Internet Gateway
 - NAT Gateway
 - Route Tables
@@ -50,14 +70,7 @@ The following diagram illustrates the AWS infrastructure and deployment workflow
 - Jenkins Server
 - Application Server
 
-### Load Balancing
-
-- Application Load Balancer (ALB)
-- Target Groups
-- Health Checks
-- Path-based Routing
-
-### DevOps Tools
+### DevOps Services
 
 - Terraform
 - Ansible
@@ -66,45 +79,33 @@ The following diagram illustrates the AWS infrastructure and deployment workflow
 
 ---
 
-## Technology Stack
+# Project Workflow
 
-| Category | Technologies |
-|----------|--------------|
-| Cloud Platform | AWS |
-| Infrastructure as Code | Terraform |
-| Configuration Management | Ansible |
-| Containerization | Docker |
-| CI/CD | Jenkins |
-| Compute | EC2 |
-| Networking | VPC, Subnets, Route Tables, Internet Gateway, NAT Gateway |
-| Load Balancing | Application Load Balancer (ALB) |
-| Security | IAM, Security Groups |
-| Remote State | Amazon S3 |
-| Operating System | Linux |
-| Version Control | Git & GitHub |
-
----
-
-## Project Workflow
-
-1. Terraform provisions the complete AWS infrastructure.
+1. Terraform provisions the AWS infrastructure.
 2. A custom VPC with public and private subnets is created.
-3. Bastion Host, Jenkins Server, and Application Server are deployed.
+3. Bastion Host, Jenkins Server and Application Server are deployed.
 4. Ansible installs and configures Docker on the target servers.
 5. Jenkins automates the application build and deployment process.
-6. Docker containerizes the Node.js application.
+6. Docker builds and deploys the application.
 7. The Application Load Balancer routes incoming traffic to the application server.
-8. Users access the application securely through the ALB while backend servers remain private.
+8. Users securely access the application through the ALB while backend servers remain inside private subnets.
 
 ---
 
-## Repository Structure
+# Repository Structure
 
-```
-.
-├── ansible/
+```text
+aws-devops-infrastructure
+│
 ├── terraform/
+├── ansible/
 ├── screenshots/
+│   ├── architecture-diagram.jpg
+│   ├── alb.png
+│   ├── ec2.png
+│   ├── jenkins.png
+│   └── vpc.png
+│
 ├── Dockerfile
 ├── Jenkinsfile
 ├── package.json
@@ -114,7 +115,7 @@ The following diagram illustrates the AWS infrastructure and deployment workflow
 
 ---
 
-## Infrastructure Highlights
+# Infrastructure Highlights
 
 - Infrastructure fully provisioned using Terraform
 - Remote Terraform state stored in Amazon S3
@@ -127,20 +128,19 @@ The following diagram illustrates the AWS infrastructure and deployment workflow
 
 ---
 
-## Screenshots
+# Screenshots
 
-Project screenshots are available inside the **screenshots/** directory, including:
+The repository includes screenshots demonstrating the deployment process.
 
 - AWS Architecture Diagram
+- VPC Configuration
+- EC2 Instances
 - Jenkins Dashboard
-- Terraform Deployment
 - Application Load Balancer
-- Docker Deployment
-- Infrastructure Provisioning
 
 ---
 
-## Skills Demonstrated
+# Skills Demonstrated
 
 - Amazon Web Services (AWS)
 - Terraform
@@ -162,12 +162,12 @@ Project screenshots are available inside the **screenshots/** directory, includi
 
 ---
 
-## Project Outcome
+# Project Outcome
 
-Successfully designed and deployed a secure, production-style AWS infrastructure using Infrastructure as Code and DevOps automation tools. The project demonstrates provisioning, configuration management, containerization, and CI/CD implementation while following AWS networking and security best practices.
+Successfully designed and deployed a secure AWS infrastructure using Infrastructure as Code and DevOps automation tools. The project demonstrates provisioning, configuration management, containerization and CI/CD implementation while following AWS networking and security best practices.
 
 ---
 
-## Note
+# Note
 
-AWS resources were terminated after project completion to avoid unnecessary cloud costs. The complete infrastructure can be recreated using the Terraform and Ansible configurations available in this repository.
+AWS resources were terminated after project completion to avoid unnecessary cloud costs. The infrastructure can be recreated anytime using the Terraform and Ansible configurations available in this repository.
